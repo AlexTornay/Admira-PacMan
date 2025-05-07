@@ -110,17 +110,37 @@ function prevSlide() {
 }
 
 // BOTÓN START
-startButton.addEventListener('click', () => {
+startButton.addEventListener('click', async () => {
+    if (!mediaUnlocked) {
+        try {
+            carouselVideo.muted = true;
+            await carouselVideo.play();
+            carouselVideo.pause();
+            mediaUnlocked = true;
+            console.log('Contexto multimedia desbloqueado');
+        } catch (err) {
+            console.warn('No se pudo desbloquear el contexto:', err);
+        }
+    }
+
     carouselImage.style.opacity = 0;
     carouselVideo.style.opacity = 1;
 
-    const promise = carouselVideo.play();
-    if (promise !== undefined) {
-        promise.catch((err) => {
+    // Esperar a que esté listo antes de reproducir
+    carouselVideo.addEventListener('canplay', async () => {
+        try {
+            await carouselVideo.play();
+            console.log('Video reproduciéndose');
+        } catch (err) {
             console.error('Error al reproducir video:', err);
-        });
-    }
+        }
+    }, { once: true });
+
+    // Forzar recarga del video
+    carouselVideo.load();
 });
+
+
 
 
 
