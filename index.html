@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admira Game Style</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="Medios/Admira-Title.png" alt="Admira Logo">
+        </div>
+        <div id="carouselTitle" class="carousel-title">Visita 1</div>
+        <div class="carousel-wrapper">
+            <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+            <div class="carousel">
+                <img id="carouselImage" src="Medios/Mapa1.png" alt="carousel">
+                <video id="carouselVideo" muted playsinline preload="auto">
+    <source id="videoSource" src="" type="video/mp4">
+</video>
+            </div>
+            <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <ul class="menu">
+            <li>OASIS</li>
+            <li>FUTURE STORE</li>
+            <li>LAB</li>
+            <li>ACELERADORA</li>
+            <li>UNIVERSITY</li>
+            <li>DEV</li>
+        </ul>
+
+        <button class="start-button"></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
