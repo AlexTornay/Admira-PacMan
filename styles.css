@@ -1,0 +1,202 @@
+@font-face {
+    font-family: 'PressStart2P';
+    src: url('Fonts/PressStart2P.ttf') format('truetype');
+}
+
+html, body {
+    background-color: black;
+    color: white;
+    font-family: 'PressStart2P', monospace;
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    touch-action: none;
+}
+
+/* Bloquear rotación en móvil */
+@media screen and (orientation: landscape) {
+    body {
+        transform: rotate(-90deg);
+        transform-origin: center center;
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+    }
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 100px;
+    overflow-y: auto;
+}
+
+.logo img {
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    margin: 5px 0; /* reducido margen */
+}
+
+.carousel-wrapper {
+    width: 100%;
+    max-width: 90vmin;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.carousel-title {
+    width: 100%;
+    max-width: 90vmin;
+    margin: 5px 0;
+    color: yellow;
+    text-transform: uppercase;
+    border: 2px solid yellow;
+    padding: 5px 8px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 4px;
+    font-size: 4vw;
+    box-sizing: border-box;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 8vw;
+    cursor: pointer;
+    z-index: 3;
+    padding: 5px;
+}
+
+.arrow.left {
+    left: -60px;
+}
+
+.arrow.right {
+    right: -60px;
+}
+
+.carousel {
+    width: 100%;
+    max-width: 90vmin;
+    aspect-ratio: 1 / 1;
+    background-color: black;
+    border: 4px solid blue;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel img, .carousel video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+#carouselImage,
+#carouselVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#carouselImage {
+    opacity: 1;
+    z-index: 2;
+}
+
+#carouselVideo {
+    opacity: 0;
+    z-index: 1;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 90vmin;
+    box-sizing: border-box;
+}
+
+.menu li {
+    font-size: 4vw;
+}
+
+.start-button {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    max-width: 250px;
+    height: 18vw;
+    max-height: 80px;
+    background: url('Medios/BotonStart.png') no-repeat center center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    display: block;
+    z-index: 10;
+}
+
+.start-button:hover {
+    background: url('Medios/BotonStart_Hover.png') no-repeat center center;
+    background-size: contain;
+}
+
+@media (max-width: 600px) {
+    .carousel-wrapper {
+        max-width: 65vmin;
+    }
+    .carousel-title {
+        font-size: 5vw;
+        max-width: 65vmin;
+    }
+    .arrow.left {
+        left: -50px;
+    }
+    .arrow.right {
+        right: -50px;
+    }
+    .menu li {
+        font-size: 5vw;
+    }
+    .start-button {
+        width: 65vw;
+        height: 20vw;
+    }
+}
