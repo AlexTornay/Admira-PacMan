@@ -11,12 +11,22 @@ html, body {
     padding: 0;
     height: 100dvh;
     width: 100%;
-    min-height: unset;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
     overflow: hidden;
+    touch-action: none;
+}
+
+/* Bloquear rotación en móvil */
+@media screen and (orientation: landscape) {
+    body {
+        transform: rotate(-90deg);
+        transform-origin: center center;
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+    }
 }
 
 .container {
@@ -25,72 +35,97 @@ html, body {
     width: 100%;
     max-width: 400px;
     height: 100dvh;
-    min-height: unset;
-    padding: 0 10px;
     box-sizing: border-box;
-    padding-bottom: 0px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 80px;
 }
 
 .logo img {
-    position: relative;;
-    left: -3%;
-    
     width: auto;
     max-width: 80%;
     height: auto;
-    margin: 10px 0 60px 0;
+    margin: 10px 0;
 }
 
 .carousel-wrapper {
-    position: relative;
     width: 100%;
-    max-width: 80vw;
-    margin: 0 auto 20px auto;
-    margin-top: 20px;
+    max-width: 90vmin;
+    position: relative;
     display: flex;
-    flex-direction: column; /* para apilar título y carrusel */
+    flex-direction: column;
     align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box;
+    margin: 10px 0;
 }
 
 .carousel-title {
     width: 100%;
-    max-width: 70vw;
-    box-sizing: border-box;
-    margin-bottom: 10px;
+    max-width: 90vmin; /* igual al carousel */
+    margin: 10px 0;
     color: yellow;
     text-transform: uppercase;
-    text-align: center;
     border: 2px solid yellow;
     padding: 5px 8px;
-    display: block;
     background: rgba(0,0,0,0.7);
     border-radius: 4px;
-    margin: 0 auto;
-
-    font-size: 3.5vw; /* valor inicial, pero controlado por JS */
+    font-size: 4vw;
+    box-sizing: border-box;
 }
 
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 8vw;
+    cursor: pointer;
+    z-index: 3;
+    padding: 5px;
+}
+
+.arrow.left {
+    left: -50px; /* más separación */
+}
+
+.arrow.right {
+    right: -50px; /* más separación */
+}
 
 .carousel {
-    position: relative;
     width: 100%;
+    max-width: 90vmin;
     aspect-ratio: 1 / 1;
-    border: 4px solid blue;
     background-color: black;
+    border: 4px solid blue;
+    position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.carousel img,
-.carousel video {
-    position: absolute;
-    top: 0;
-    left: 0;
+.carousel img, .carousel video {
     width: 100%;
     height: 100%;
     object-fit: contain;
     transition: opacity 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+#carouselImage,
+#carouselVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 
 #carouselImage {
@@ -102,39 +137,6 @@ html, body {
     opacity: 0;
     z-index: 1;
 }
-.carousel video {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    opacity: 0;
-    z-index: 1;
-    transition: opacity 0.3s ease;
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: white;
-    font-size: 12vw;
-    cursor: pointer;
-    z-index: 2;
-    padding: 10px;
-}
-
-.arrow.left {
-    left: 0;
-    transform: translate(-90%, -50%);
-}
-
-.arrow.right {
-    right: 0;
-    transform: translate(90%, -50%);
-}
 
 .menu {
     list-style: none;
@@ -144,35 +146,56 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    width: 100%;
+    max-width: 90vmin;
+    box-sizing: border-box;
 }
 
 .menu li {
-    font-size: 3.5vw;
+    font-size: 4vw;
 }
 
 .start-button {
-    width: 70vw;
-    max-width: 300px;
-    height: 20vw;
-    max-height: 100px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    max-width: 250px;
+    height: 18vw;
+    max-height: 80px;
     background: url('Medios/BotonStart.png') no-repeat center center;
     background-size: contain;
     border: none;
     cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
+    display: block;
+    z-index: 10;
 }
 
 .start-button:hover {
     background: url('Medios/BotonStart_Hover.png') no-repeat center center;
     background-size: contain;
 }
-@media (max-height: 500px) {
-    .logo img { margin-bottom: 30px; }
-    .carousel-title { font-size: 5vw; }
-    .menu li { font-size: 5vw; }
-    .start-button { bottom: 10px; }
+
+@media (max-width: 600px) {
+    .carousel-wrapper {
+        max-width: 65vmin;
+    }
+    .carousel-title {
+        font-size: 5vw;
+        max-width: 65vmin;
+    }
+    .arrow.left {
+        left: -40px; /* más separación en móvil */
+    }
+    .arrow.right {
+        right: -40px; /* más separación en móvil */
+    }
+    .menu li {
+        font-size: 5vw;
+    }
+    .start-button {
+        width: 65vw;
+        height: 20vw;
+    }
 }
