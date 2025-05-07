@@ -41,7 +41,8 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 80px;
+    padding-bottom: 100px; /* aumentar espacio para botón */
+    overflow-y: auto;
 }
 
 .logo img {
@@ -63,7 +64,7 @@ html, body {
 
 .carousel-title {
     width: 100%;
-    max-width: 90vmin; /* igual al carousel */
+    max-width: 90vmin;
     margin: 10px 0;
     color: yellow;
     text-transform: uppercase;
@@ -89,11 +90,11 @@ html, body {
 }
 
 .arrow.left {
-    left: -50px; /* más separación */
+    left: -60px; /* aún más separación */
 }
 
 .arrow.right {
-    right: -50px; /* más separación */
+    right: -60px; /* aún más separación */
 }
 
 .carousel {
@@ -141,7 +142,7 @@ html, body {
 .menu {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 10px 0 100px 0; /* extra margen abajo para no quedar tapado */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,10 +187,10 @@ html, body {
         max-width: 65vmin;
     }
     .arrow.left {
-        left: -40px; /* más separación en móvil */
+        left: -50px;
     }
     .arrow.right {
-        right: -40px; /* más separación en móvil */
+        right: -50px;
     }
     .menu li {
         font-size: 5vw;
